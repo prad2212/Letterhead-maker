@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Thank You Letterhead Designer</title>
+  
+  <!-- Google Fonts: Inter (Sans-serif interface/body) & Playfair Display (Serif header) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons (CDN) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- LEFT SIDEBAR: CONTROLS -->
+    <aside class="sidebar">
+      <div class="sidebar-header" style="display: flex; align-items: center; justify-content: space-between; position: relative;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <i data-lucide="award" style="width: 24px; height: 24px; color: var(--accent);"></i>
+          <h1 style="font-size: 1rem; font-weight: 800; color: white; margin: 0; letter-spacing: -0.01em;">Letterpress</h1>
+        </div>
+        
+        <!-- Active User Profile Dropdown Button -->
+        <div class="header-user-menu" id="header-user-menu">
+          <button type="button" class="user-menu-trigger" id="user-menu-trigger" title="Account Settings">
+            <i data-lucide="circle-user"></i>
+          </button>
+          
+          <div class="user-dropdown-card" id="user-dropdown-card">
+            <div class="dropdown-header">
+              <div class="avatar-sm">
+                <i data-lucide="user"></i>
+              </div>
+              <div class="user-meta">
+                <div class="user-name" id="dropdown-user-name">User Name</div>
+                <div class="user-email" id="dropdown-user-email">email@domain.com</div>
+              </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <button type="button" class="dropdown-btn dropdown-btn-danger" id="dropdown-btn-signout">
+              <i data-lucide="log-out" style="width: 14px; height: 14px;"></i> Sign Out
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Navigation Tabs -->
+      <nav class="tabs-nav">
+        <button class="tab-btn active" data-tab="recipient-tab">
+          <i data-lucide="user"></i> Recipient
+        </button>
+        <button class="tab-btn" data-tab="content-tab">
+          <i data-lucide="file-text"></i> Content
+        </button>
+        <button class="tab-btn" data-tab="settings-tab">
+          <i data-lucide="settings"></i> Letterhead
+        </button>
+      </nav>
+      
+      <!-- Tab Contents -->
+      <div class="tabs-content">
+        
+        <!-- Tab 1: Recipient Form -->
+        <div class="tab-panel active" id="recipient-tab">
+          <div class="form-group">
+            <label for="input-rec-name">Recipient Name</label>
+            <input type="text" id="input-rec-name" placeholder="e.g. John Doe" value="Dr. Aaryan Sharma">
+          </div>
+          
+          <div class="form-group">
+            <label for="input-rec-org">Recipient Organization (Optional)</label>
+            <input type="text" id="input-rec-org" placeholder="e.g. Red Cross Society" value="Global Outreach Foundation">
+          </div>
+          
+          <div class="form-group">
+            <label for="input-rec-address">Address</label>
+            <textarea id="input-rec-address" placeholder="e.g. 123 Care Street&#10;Suite 400&#10;New York, NY 10001" style="min-height: 80px;">456 Philanthropy Way
+Greenwood District
+Seattle, WA 98101</textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="input-date">Letter Date</label>
+            <input type="date" id="input-date">
+          </div>
+        </div>
+        
+        <!-- Tab 2: Content Form -->
+        <div class="tab-panel" id="content-tab">
+          <div class="form-group">
+            <label for="select-language" style="display: flex; align-items: center; gap: 4px;">
+              <i data-lucide="languages" style="width: 15px; height: 15px;"></i> Letter Language / भाषा
+            </label>
+            <select id="select-language" style="width: 100%; padding: 10px; border-radius: 6px; background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border-ui); font-size: 0.9rem; outline: none; cursor: pointer; transition: all 0.3s; margin-top: 4px;">
+              <option value="en">English</option>
+              <option value="mr">Marathi (मराठी)</option>
+              <option value="hi">Hindi (हिंदी)</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="input-subject">Subject</label>
+            <input type="text" id="input-subject" placeholder="e.g. Letter of Appreciation" value="Letter of Deepest Appreciation for Your Exceptional Support">
+          </div>
+          
+          <div class="form-group">
+            <label for="input-body">Letter Paragraphs</label>
+            <textarea id="input-body" placeholder="Write your content here..." style="min-height: 220px;">On behalf of our entire organization, I am writing to express our profound gratitude for the extraordinary support you have extended to us during our recent initiatives. Your generous commitment of time, resources, and leadership has played a pivotal role in the success of our programs.
+
+Because of your dedication, we have been able to expand our community outreach and directly impact over five hundred families in need. The passion and integrity you bring to our collaborative efforts serve as an inspiration to our team and volunteers alike.
+
+We are truly honored to have you as a cornerstone supporter of our mission. Thank you once again for your remarkable generosity, kind spirit, and enduring partnership. We look forward to continuing our journey together to make a lasting difference.</textarea>
+          </div>
+          
+          <div class="form-group">
+            <label>Load Quick Templates</label>
+            <div class="templates-grid">
+              <button type="button" class="template-card" data-template="volunteer">
+                <h4>Volunteer Appreciation</h4>
+                <p>Thanking a volunteer for dedicated time and selfless community service.</p>
+              </button>
+              <button type="button" class="template-card" data-template="donor">
+                <h4>Donor & Financial Partner</h4>
+                <p>Expressing gratitude for substantial funding or material donations.</p>
+              </button>
+              <button type="button" class="template-card" data-template="speaker">
+                <h4>Guest Speaker / Mentor</h4>
+                <p>Appreciating a guest speaker for sharing valuable expertise and advice.</p>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tab 3: Letterhead & Stamp Settings -->
+        <div class="tab-panel" id="settings-tab">
+          
+          <div class="form-group">
+            <label for="input-org-name">Organization Name</label>
+            <input type="text" id="input-org-name" placeholder="e.g. Hope Alliance" value="Dhal Niradhar Charitable trust">
+          </div>
+          
+          <div class="form-group">
+            <label for="input-org-tagline">Organization Tagline</label>
+            <input type="text" id="input-org-tagline" placeholder="e.g. Building a brighter future" value="Nourishing Hope, Empowering Lives">
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="input-org-phone">Phone</label>
+              <input type="text" id="input-org-phone" placeholder="+1 (555) 123-4567" value="8767465469 / 7709854469">
+            </div>
+            <div class="form-group">
+              <label for="input-org-email">Email</label>
+              <input type="text" id="input-org-email" placeholder="contact@org.org" value="dhalniradhartrustofficial@gmail.com">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="input-org-address">Org Address (Header Right)</label>
+            <textarea id="input-org-address" placeholder="789 Avenue, City, State" style="min-height: 60px;">Instagram: @dnctrust</textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="input-org-reg">NGO Registration Number (Header Top-Right)</label>
+            <input type="text" id="input-org-reg" placeholder="e.g. Reg-E-0001346(LTR)" value="Reg-E-0001346(LTR)">
+          </div>
+
+          <div class="form-group">
+            <label for="input-org-footer">Custom Footer Content (Leave empty for auto-generated contacts)</label>
+            <textarea id="input-org-footer" placeholder="e.g. Dhal Niradhar Charitable trust • All donations are tax-exempt • dnctrust.org" style="min-height: 60px;"></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="input-signer-name">Signer Name</label>
+              <input type="text" id="input-signer-name" placeholder="Executive Director" value="Marcus Vance">
+            </div>
+            <div class="form-group">
+              <label for="input-signer-title">Signer Title</label>
+              <input type="text" id="input-signer-title" placeholder="Director" value="Executive Director">
+            </div>
+          </div>
+
+          <div style="height: 1px; background-color: var(--border-ui); margin: 8px 0;"></div>
+          
+          <!-- Stamp adjustments -->
+          <div class="form-group">
+            <label>Organization Stamp PNG</label>
+            <div class="file-upload">
+              <input type="file" id="upload-stamp" accept="image/*">
+              <div class="file-upload-btn">
+                <i data-lucide="upload-cloud"></i> Upload Custom Stamp
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-container">
+            <div class="slider-header">
+              <span>Stamp Size</span>
+              <span id="stamp-size-val">100px</span>
+            </div>
+            <input type="range" id="slider-stamp-size" min="60" max="220" value="110">
+          </div>
+
+          <div class="slider-container">
+            <div class="slider-header">
+              <span>Stamp Rotation</span>
+              <span id="stamp-rot-val">-5°</span>
+            </div>
+            <input type="range" id="slider-stamp-rot" min="-180" max="180" value="-5">
+          </div>
+
+          <div class="slider-container">
+            <div class="slider-header">
+              <span>Stamp Opacity</span>
+              <span id="stamp-opac-val">90%</span>
+            </div>
+            <input type="range" id="slider-stamp-opac" min="20" max="100" value="90">
+          </div>
+          
+          <!-- Letterhead Logo adjustments -->
+          <div class="form-group">
+            <label>Organization Logo (Header Left)</label>
+            <div class="file-upload">
+              <input type="file" id="upload-logo" accept="image/*">
+              <div class="file-upload-btn">
+                <i data-lucide="image"></i> Upload Logo Image
+              </div>
+            </div>
+            <button type="button" class="btn btn-danger" id="btn-remove-logo" style="padding: 6px; font-size: 0.75rem; margin-top: 6px; display: none;">
+              Remove Custom Logo
+            </button>
+          </div>
+          
+        </div>
+        
+      </div>
+      
+      <!-- Sidebar Footer Buttons -->
+      <div class="actions-footer">
+        <button class="btn btn-primary" id="btn-save-document">
+          <i data-lucide="save"></i> Save Letter to History
+        </button>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+          <button class="btn btn-secondary" id="btn-print">
+            <i data-lucide="printer"></i> Print / PDF
+          </button>
+          <button class="btn btn-secondary" id="btn-clear">
+            <i data-lucide="rotate-ccw"></i> Reset Form
+          </button>
+        </div>
+      </div>
+    </aside>
+    
+    <!-- CENTER PREVIEW CANVAS -->
+    <main class="canvas-wrapper">
+      
+      <!-- Visual Paper Page Container -->
+      <article class="letter-canvas" id="printable-area">
+        
+        <!-- Header: Brand details -->
+        <header class="letterhead-header">
+          <div class="letterhead-brand">
+            <img id="letter-logo" class="letterhead-logo" style="display: none;" src="" alt="Organization Logo">
+            <div id="letter-org-name" class="letterhead-title">Dhal Niradhar Charitable trust</div>
+            <div id="letter-org-tagline" class="letterhead-tagline">Nourishing Hope, Empowering Lives</div>
+          </div>
+          <div class="letterhead-right-block">
+            <div id="letter-reg-display" class="letterhead-reg-number">Reg. No: Reg-E-0001346(LTR)</div>
+            <div id="letter-org-contacts" class="letterhead-contacts">
+              <div>Phone: 8767465469 / 7709854469</div>
+              <div>dhalniradhartrustofficial@gmail.com</div>
+              <div>Instagram: @dnctrust</div>
+            </div>
+          </div>
+        </header>
+        <!-- Full-width accent divider line (separate from header to ensure it's always one clean line) -->
+        <div class="header-divider"></div>
+        
+        <!-- Details: Recipient and Date -->
+        <section class="letter-meta">
+          <div class="letter-recipient">
+            <div id="letter-recipient-to" class="recipient-to">To,</div>
+            <div id="letter-rec-name" class="recipient-name">Dr. Aaryan Sharma</div>
+            <div id="letter-rec-org" class="recipient-org" style="font-weight: 500;">Global Outreach Foundation</div>
+            <div id="letter-rec-address" class="recipient-address">456 Philanthropy Way
+Greenwood District
+Seattle, WA 98101</div>
+          </div>
+          <div id="letter-date-display" class="letter-date">May 18, 2026</div>
+        </section>
+        
+        <!-- Body Paragraphs -->
+        <section class="letter-body">
+          <div id="letter-subject-display" class="letter-subject">Letter of Deepest Appreciation for Your Exceptional Support</div>
+          <div id="letter-content-display" class="letter-paragraphs">On behalf of our entire organization, I am writing to express our profound gratitude for the extraordinary support you have extended to us during our recent initiatives. Your generous commitment of time, resources, and leadership has played a pivotal role in the success of our programs.
+
+Because of your dedication, we have been able to expand our community outreach and directly impact over five hundred families in need. The passion and integrity you bring to our collaborative efforts serve as an inspiration to our team and volunteers alike.
+
+We are truly honored to have you as a cornerstone supporter of our mission. Thank you once again for your remarkable generosity, kind spirit, and enduring partnership. We look forward to continuing our journey together to make a lasting difference.</div>
+        </section>
+        
+        <!-- Closing signature block -->
+        <footer class="letter-closing">
+          <div id="letter-closing-text" class="closing-text">Sincerely,</div>
+          
+          <div class="closing-signer">
+            <div id="letter-signer-name" class="signer-name">Marcus Vance</div>
+            <div id="letter-signer-title" class="signer-title">Executive Director</div>
+          </div>
+        </footer>
+        
+        <!-- Bottom formal footer -->
+        <div id="letter-footer-display" class="letterhead-footer">
+          Dhal Niradhar Charitable trust • Phone: 8767465469 / 7709854469 • Instagram: @dnctrust
+        </div>
+
+        <!-- Draggable and Resizable Stamp -->
+        <div class="stamp-container" id="draggable-stamp" style="bottom: 120px; right: 100px; width: 110px; height: 110px;">
+          <!-- Using a beautifully designed CSS-based fallback SVG stamp to make sure it looks outstanding by default! -->
+          <img class="stamp-img" id="stamp-image-element" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' width='120' height='120'><circle cx='60' cy='60' r='54' fill='none' stroke='%23d97706' stroke-width='4' stroke-dasharray='4,4'/><circle cx='60' cy='60' r='46' fill='none' stroke='%23d97706' stroke-width='2'/><text x='50%25' y='36%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-weight='bold' font-size='9' fill='%23d97706' letter-spacing='1'>OFFICIAL STAMP</text><path d='M 25 60 L 95 60' stroke='%23d97706' stroke-width='2'/><text x='50%25' y='52%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='10' fill='%23d97706' letter-spacing='0.5'>APPROVED</text><text x='50%25' y='68%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='6' fill='%23d97706'>DNCT TRUST</text><circle cx='60' cy='60' r='40' fill='none' stroke='%23d97706' stroke-width='1' stroke-opacity='0.4'/><text x='50%25' y='88%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='600' font-size='7' fill='%23d97706'>GRATITUDE</text></svg>" alt="Stamp">
+          <div class="stamp-resize-handle" id="stamp-resizer"></div>
+        </div>
+
+      </article>
+      
+      <!-- Collapsible History Sidebar Toggle -->
+      <button class="history-toggle-btn" id="btn-toggle-history" title="Toggle Saved Letters History">
+        <i data-lucide="history"></i>
+      </button>
+      
+    </main>
+    
+    <!-- RIGHT SIDEBAR: SAVED LETTERS HISTORY -->
+    <aside class="history-panel collapsed" id="history-sidebar">
+      <div class="history-header">
+        <h2><i data-lucide="history"></i> Saved Letters</h2>
+        <button class="card-btn" id="btn-close-history" style="padding: 6px;">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      
+      <div class="history-list" id="history-container">
+        <!-- Rendered dynamically in JS -->
+        <div class="history-empty">
+          <i data-lucide="folder-open"></i>
+          <p>No saved letters found. Save a letter from the sidebar to store it locally.</p>
+        </div>
+      </div>
+    </aside>
+    
+  </div>
+
+  <!-- Mobile Mode Toggle Switcher -->
+  <div class="mobile-mode-switcher" id="mobile-mode-switcher">
+    <button type="button" class="mode-switch-btn active" id="btn-mode-editor">
+      <i data-lucide="edit-3"></i> Editor
+    </button>
+    <button type="button" class="mode-switch-btn" id="btn-mode-preview">
+      <i data-lucide="eye"></i> Canvas
+    </button>
+    <button type="button" class="mode-switch-btn" id="btn-mode-print">
+      <i data-lucide="printer"></i> Print
+    </button>
+  </div>
+
+  <!-- Notification Toast -->
+  <div class="notification-toast" id="notification-toast">
+    <i data-lucide="check-circle-2"></i>
+    <span id="notification-message">Document saved successfully!</span>
+  </div>
+
+  <!-- Premium Authentication Modal Overlay -->
+  <div id="auth-modal" class="auth-modal-overlay">
+    <div class="auth-modal-card">
+      <div class="auth-modal-header">
+        <div class="brand-display" style="display: flex; align-items: center; gap: 10px;">
+          <div class="brand-logo-glow">
+            <i data-lucide="award" style="color: white; width: 22px; height: 22px;"></i>
+          </div>
+          <div>
+            <h2 style="font-size: 1.15rem; font-weight: 800; color: white; letter-spacing: -0.02em; margin: 0; line-height: 1.2;">Dhal Niradhar</h2>
+            <span style="font-size: 0.68rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;">Charitable Trust Letterhead</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="auth-modal-tabs">
+        <button type="button" class="auth-modal-tab-btn active" id="modal-tab-signin">Sign In</button>
+        <button type="button" class="auth-modal-tab-btn" id="modal-tab-signup">Create Account</button>
+      </div>
+      
+      <div class="auth-modal-body">
+        <h3 id="modal-auth-title" style="margin-bottom: 6px; font-size: 1.25rem; font-weight: 800; color: var(--text-main);">Welcome Back</h3>
+        <p id="modal-auth-desc" style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 24px;">Please enter your credentials to access the workspace.</p>
+        
+        <form id="modal-form-auth" autocomplete="off" style="display: flex; flex-direction: column; gap: 16px;">
+          <!-- Name field (only visible on signup) -->
+          <div class="form-group" id="modal-group-name" style="display: none;">
+            <label for="modal-input-name">Full Name</label>
+            <input type="text" id="modal-input-name" placeholder="e.g. John Doe">
+          </div>
+          
+          <div class="form-group">
+            <label for="modal-input-email">Email Address</label>
+            <input type="email" id="modal-input-email" placeholder="name@domain.com" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="modal-input-password">Password</label>
+            <input type="password" id="modal-input-password" placeholder="••••••••" required>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" id="modal-btn-submit" style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; padding: 12px; margin-top: 8px; background: linear-gradient(135deg, var(--accent), #d97706); border: none; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);">
+            <i data-lucide="log-in" style="width: 16px; height: 16px;"></i> Sign In
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript App Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
