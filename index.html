@@ -414,13 +414,27 @@ We are truly honored to have you as a cornerstone supporter of our mission. Than
             <input type="email" id="modal-input-email" placeholder="name@domain.com" required>
           </div>
           
-          <div class="form-group">
-            <label for="modal-input-password">Password</label>
+          <div class="form-group" id="modal-group-password">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <label for="modal-input-password">Password</label>
+              <button type="button" id="btn-forgot-password" style="background: none; border: none; font-size: 0.72rem; color: var(--text-secondary); cursor: pointer; padding: 0; font-weight: 500; transition: color 0.2s ease; outline: none;">Forgot Password?</button>
+            </div>
             <input type="password" id="modal-input-password" placeholder="••••••••" required>
           </div>
           
           <button type="submit" class="btn btn-primary" id="modal-btn-submit" style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; padding: 12px; margin-top: 8px; background: linear-gradient(135deg, var(--accent), #d97706); border: none; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);">
             <i data-lucide="log-in" style="width: 16px; height: 16px;"></i> Sign In
+          </button>
+
+          <!-- Guest Sign-in Option -->
+          <div id="modal-guest-divider" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 12px 0 4px 0;">
+            <span style="height: 1px; flex: 1; background-color: rgba(255, 255, 255, 0.08);"></span>
+            <span style="font-size: 0.68rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Or</span>
+            <span style="height: 1px; flex: 1; background-color: rgba(255, 255, 255, 0.08);"></span>
+          </div>
+
+          <button type="button" class="btn btn-secondary" id="modal-btn-guest" style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px; font-weight: 600; padding: 12px; border: 1px solid rgba(255, 255, 255, 0.08); background-color: rgba(255, 255, 255, 0.02);">
+            <i data-lucide="user" style="width: 16px; height: 16px;"></i> Sign In as Guest
           </button>
         </form>
       </div>

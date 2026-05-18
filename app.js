@@ -225,7 +225,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalInputName = document.getElementById('modal-input-name');
   const modalInputEmail = document.getElementById('modal-input-email');
   const modalInputPassword = document.getElementById('modal-input-password');
+  const modalGroupPassword = document.getElementById('modal-group-password');
   const modalBtnSubmit = document.getElementById('modal-btn-submit');
+  const btnForgotPassword = document.getElementById('btn-forgot-password');
+  const modalGuestDivider = document.getElementById('modal-guest-divider');
+  const modalBtnGuest = document.getElementById('modal-btn-guest');
   
   const headerUserMenu = document.getElementById('header-user-menu');
   const userMenuTrigger = document.getElementById('user-menu-trigger');
@@ -994,7 +998,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- LOCAL SECURE USER AUTHENTICATION MECHANISMS (MODAL & DROPDOWN) ---
   
-  let authMode = 'signin'; // toggle between 'signin' and 'signup'
+  let authMode = 'signin'; // toggle between 'signin', 'signup', and 'forgot'
   
   function initAuth() {
     // 1. Modal Toggle switch buttons
@@ -1010,14 +1014,21 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
     
+    if (btnForgotPassword) {
+      btnForgotPassword.addEventListener('click', (e) => {
+        e.preventDefault();
+        setModalAuthMode('forgot');
+      });
+    }
+    
     // 2. Form submission handler
     if (modalFormAuth) {
       modalFormAuth.addEventListener('submit', (e) => {
         e.preventDefault();
         
         const email = modalInputEmail.value.trim().toLowerCase();
-        const password = modalInputPassword.value;
-        const name = modalInputName.value.trim();
+        const password = modalInputPassword ? modalInputPassword.value : '';
+        const name = modalInputName ? modalInputName.value.trim() : '';
         
         let users = localStorage.getItem('letterhead_users');
         users = users ? JSON.parse(users) : [];
@@ -1052,6 +1063,21 @@ document.addEventListener('DOMContentLoaded', () => {
           updateAuthUI();
           renderHistory();
           showToast(`Welcome to your workspace, ${name}!`);
+        } else if (authMode === 'forgot') {
+          // Forgot password email retrieval
+          const user = users.find(u => u.email === email);
+          if (!user) {
+            showToast("No registered account found with this email address!", true);
+            return;
+          }
+          
+          // Reveal password elegantly directly inside description block for high usability!
+          modalAuthDesc.innerHTML = `<div style="background-color: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); padding: 12px; border-radius: 8px; margin-top: 8px; color: #10b981; font-size: 0.82rem; text-align: left; line-height: 1.4;">
+            <i data-lucide="check-circle" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-right: 4px;"></i>
+            <strong>Account Found!</strong> Your password is: <code style="background-color: rgba(255,255,255,0.08); padding: 3px 6px; border-radius: 4px; color: white; font-weight: 700; font-family: monospace;">${user.password}</code>
+          </div>`;
+          lucide.createIcons();
+          showToast("Password retrieved successfully!");
         } else {
           // Sign In check
           const user = users.find(u => u.email === email && u.password === password);
@@ -1074,7 +1100,25 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
     
-    // 3. User Menu Dropdown trigger
+    // 3. Guest Sign-in Button handler
+    if (modalBtnGuest) {
+      modalBtnGuest.addEventListener('click', () => {
+        // Sign in as secure Local Guest Session
+        const guestUser = { name: "Guest User", email: "guest@local" };
+        localStorage.setItem('letterhead_current_user', JSON.stringify(guestUser));
+        
+        // Hide auth modal and reset forms
+        if (authModal) authModal.classList.add('hidden');
+        modalInputEmail.value = "";
+        if (modalInputPassword) modalInputPassword.value = "";
+        
+        updateAuthUI();
+        renderHistory();
+        showToast("Logged in as Guest. Welcome!");
+      });
+    }
+    
+    // 4. User Menu Dropdown trigger
     if (userMenuTrigger) {
       userMenuTrigger.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -1093,7 +1137,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
     
-    // 4. Dropdown Sign Out button handler
+    // 5. Dropdown Sign Out button handler
     if (dropdownBtnSignOut) {
       dropdownBtnSignOut.addEventListener('click', () => {
         localStorage.removeItem('letterhead_current_user');
@@ -1105,7 +1149,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
     
-    // 5. Update initial interface state
+    // 6. Update initial interface state
     updateAuthUI();
   }
   
@@ -1118,20 +1162,51 @@ document.addEventListener('DOMContentLoaded', () => {
       
       modalAuthTitle.textContent = "Welcome Back";
       modalAuthDesc.textContent = "Please enter your credentials to access the workspace.";
+      
       modalGroupName.style.display = 'none';
       modalInputName.removeAttribute('required');
       
+      modalGroupPassword.style.display = 'block';
+      modalInputPassword.setAttribute('required', 'true');
+      
+      modalGuestDivider.style.display = 'flex';
+      modalBtnGuest.style.display = 'block';
+      
       modalBtnSubmit.innerHTML = `<i data-lucide="log-in" style="width: 16px; height: 16px;"></i> Sign In`;
-    } else {
+    } else if (mode === 'signup') {
       modalTabSignUp.classList.add('active');
       modalTabSignIn.classList.remove('active');
       
       modalAuthTitle.textContent = "Create Account";
       modalAuthDesc.textContent = "Sign up for a free local secure workspace.";
+      
       modalGroupName.style.display = 'block';
       modalInputName.setAttribute('required', 'true');
       
+      modalGroupPassword.style.display = 'block';
+      modalInputPassword.setAttribute('required', 'true');
+      
+      modalGuestDivider.style.display = 'flex';
+      modalBtnGuest.style.display = 'block';
+      
       modalBtnSubmit.innerHTML = `<i data-lucide="user-plus" style="width: 16px; height: 16px;"></i> Sign Up`;
+    } else if (mode === 'forgot') {
+      modalTabSignIn.classList.remove('active');
+      modalTabSignUp.classList.remove('active');
+      
+      modalAuthTitle.textContent = "Recover Password";
+      modalAuthDesc.textContent = "Please enter your registered email address to retrieve your password.";
+      
+      modalGroupName.style.display = 'none';
+      modalInputName.removeAttribute('required');
+      
+      modalGroupPassword.style.display = 'none';
+      modalInputPassword.removeAttribute('required');
+      
+      modalGuestDivider.style.display = 'none';
+      modalBtnGuest.style.display = 'none';
+      
+      modalBtnSubmit.innerHTML = `<i data-lucide="help-circle" style="width: 16px; height: 16px;"></i> Retrieve Password`;
     }
     
     lucide.createIcons();
