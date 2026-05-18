@@ -1337,7 +1337,9 @@ textarea {
   .actions-footer,
   .notification-toast,
   .stamp-resize-handle,
-  .canvas-wrapper::before {
+  .canvas-wrapper::before,
+  .mobile-mode-switcher,
+  .auth-modal-overlay {
     display: none !important;
   }
   
